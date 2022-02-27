@@ -6,7 +6,7 @@ import { fileURLToPath } from 'url'
 import logger from 'morgan'
 
 //to connect database with mongoose
-import ('./config/database.js')
+import('./config/database.js')
 
 // import routers
 import { router as indexRouter } from './routes/index.js'
