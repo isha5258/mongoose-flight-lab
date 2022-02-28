@@ -2,7 +2,10 @@ import * as flightDb from '../config/database.js'
 import { Flight } from '../models/flight.js'
 
 function newFlight (req, res) {
-  res.render('flights/new')
+  res.render('flights/new', {
+    title: 'Add Flight'
+  })
+
 }
 
 function create(req, res) {
@@ -20,7 +23,8 @@ function index(req, res) {
   Flight.find({}, function(error, flights) {
     res.render('flights/index', {
       flights: flights,
-      error: error
+      error: error,
+      title: 'All Flights'
     })
   })
   
