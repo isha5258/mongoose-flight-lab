@@ -24,8 +24,8 @@
     action="/flights/<%= flight._id %>/tickets"
     method="POST"
   >
-    <label for="content-textarea">Seat:</label>
-    <input name="seat" required pattern="[A-F][1-9]\d?">
+    <label for="seat-textarea">Seat:</label>
+    <input name="seat" id="seat-textarea" required pattern="[A-F][1-9]\d?">
     <label for="price-select">Price:</label>
     <input type="text" name="price" required>
     <button type="submit">Add Ticket</button>
