@@ -56,9 +56,6 @@ function edit(req, res) {
 }
 
 function update(req, res) {
-  console.log('sanity check');
-
-
   Flight.findByIdAndUpdate(req.params.id, req.body, function(err, flight) {
     res.redirect(`/flights/${flight._id}`)
   })
