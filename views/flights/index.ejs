@@ -1,14 +1,15 @@
 <%- include('../partials/html-head') %> 
 <%- include('../partials/nav') %>
 
+<main>
   <h1>Flight List</h1>
   <table>
     <thead>
       <tr>
         <th>Airport</th>
         <th>Flight#</th>
-        <th>Airline</th>
-        <th>Departure</th>
+        <th></th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -16,11 +17,17 @@
         <tr>
           <td><%= flight.airport %></td>
           <td><%= flight.flightNo %></td>
-          <td><%= flight.airline %></td>
-          <td><%= flight.departs %></td>
+          <td><a href="/flights/<%= flight._id %>">DETAILS</a></td>
+          <td>
+            <form action="/flights/<%= flight._id %>?_method=DELETE" method="POST">
+              <button>X</button>
+            </form>
+          </td>
         </tr>
       <% }) %>
     </tbody>
   </table>
   <a href="/">Return Home</a>
+</main>
+
 <%- include('../partials/footer') %> 

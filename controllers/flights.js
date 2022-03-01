@@ -1,3 +1,4 @@
+import methodOverride from 'method-override'
 import * as flightDb from '../config/database.js'
 import { Flight } from '../models/flight.js'
 
@@ -27,11 +28,27 @@ function index(req, res) {
       title: 'All Flights'
     })
   })
-  
+}
+
+function show(req, res) {
+  Flight.findById(req.params.id, function(err, flight) {
+    res.render('flights/show', {
+      title: 'Flight Detail',
+      flight: flight
+    })
+  })
+}
+
+function deleteFlight(req, res) {
+  Flight.findByIdAndDelete(req.params.id, function(err, movie) {
+    res.redirect('/flights')
+  })
 }
 
 export {
   newFlight as new,
   create,
-  index
+  index,
+  show,
+  deleteFlight as delete
 }
