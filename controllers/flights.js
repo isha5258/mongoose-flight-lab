@@ -34,7 +34,7 @@ function show(req, res) {
   Flight.findById(req.params.id, function(err, flight) {
     res.render('flights/show', {
       title: 'Flight Detail',
-      flight
+      flight: flight,
     })
   })
 }
@@ -56,7 +56,12 @@ function edit(req, res) {
 }
 
 function update(req, res) {
-  console.log('sanity');
+  console.log('sanity check');
+
+
+  Flight.findByIdAndUpdate(req.params.id, req.body, function(err, flight) {
+    res.redirect(`/flights/${flight._id}`)
+  })
 }
 
 export {

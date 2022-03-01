@@ -4,7 +4,12 @@
 
 <main>
   <h1><%= title %></h1>
-  <form id="new-form" action="/flights/<%= flight._id %>?_method=PUT" method="POST">
+
+  <form 
+    id="new-form" 
+    action="/flights/<%= flight._id %>?_method=PUT"
+    method="POST"
+  >
     <label for="airline-input">Airline:</label>
     <input type="text" name="airline" value="<%= flight.airline %>" id="airline-input">
     <label for="flightNo-input">Flight#</label>
@@ -14,9 +19,9 @@
       value="<%= flight.flightNo %>"
       id="flightNo-input"
     >
-    <label for="airline-select">Airline:</label>
-    <select name="airline" id="airline-select" >
-      <option value="<%= flight.airline %>"><%= flight.airline %></option>
+    <label for="airport-select">Airport:</label>
+    <select name="airport" id="airport-select" >
+      <option value="<%= flight.airport %>"><%= flight.airport %></option>
       <option value="DEN">DEN</option>
       <option value="LAX">LAX</option>
       <option value="AUS">AUS</option>
