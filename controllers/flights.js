@@ -1,6 +1,7 @@
 import methodOverride from 'method-override'
 import * as flightDb from '../config/database.js'
 import { Flight } from '../models/flight.js'
+import { Meal } from '../models/meal.js'
 
 function newFlight (req, res) {
   res.render('flights/new', {
@@ -32,9 +33,12 @@ function show(req, res) {
   Flight.findById(req.params.id)
   .populate('meal')
   .exec(function(err, flight) {
-    res.render('flights/show', { 
-      title: 'Flight Detail', 
-      flight 
+    Meal.find({_id: {$nin: flight.meal}}, function(err, meals) {
+      res.render('flights/show', {
+        title: 'Flight Detail', 
+        flight,
+        meals
+      })
     })
   })
 }
@@ -70,6 +74,10 @@ function createTicket(req, res) {
   })
 }
 
+function addToFlight(req, res) {
+  
+}
+
 export {
   newFlight as new,
   create,
@@ -78,5 +86,6 @@ export {
   deleteFlight as delete,
   edit,
   update,
-  createTicket
+  createTicket,
+  addToFlight
 }
