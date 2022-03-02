@@ -32,12 +32,13 @@ function show(req, res) {
   Flight.findById(req.params.id)
   .populate('meal')
   .exec(function(err, flight) {
-    res.render('flights/show', {
-      title: 'Flight Detail',
-      flight,
+    res.render('flights/show', { 
+      title: 'Flight Detail', 
+      flight 
     })
   })
 }
+
 
 function deleteFlight(req, res) {
   Flight.findByIdAndDelete(req.params.id, function(err, movie) {
