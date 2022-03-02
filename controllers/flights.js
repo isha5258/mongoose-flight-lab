@@ -13,7 +13,6 @@ function create(req, res) {
   const flight = new Flight(req.body)
   flight.save(function(err) {
     if (err) return res.redirect('/flights/new')
-    console.log('sanity 2');
     res.redirect('/flights')
     
   })
@@ -30,10 +29,12 @@ function index(req, res) {
 }
 
 function show(req, res) {
-  Flight.findById(req.params.id, function(err, flight) {
+  Flight.findById(req.params.id)
+  .populate('meal')
+  .exec(function(err, flight) {
     res.render('flights/show', {
       title: 'Flight Detail',
-      flight: flight,
+      flight,
     })
   })
 }
