@@ -27,8 +27,7 @@ const flightSchema = new Schema ( {
     enum: ['American', 'Southwest', 'United']
   },
   departs: {
-    type: Date,
-    min: Date.now() + 365*24*60*60000
+    type: Date, default: Date.now() + 365*24*60*60000
   },
   tickets: [ticketSchema],
 

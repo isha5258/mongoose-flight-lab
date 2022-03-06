@@ -11,6 +11,9 @@ function newFlight (req, res) {
 }
 
 function create(req, res) {
+  
+    if(req.body.departs === "") delete req.body.departs
+  
   const flight = new Flight(req.body)
   flight.save(function(err) {
     if (err) return res.redirect('/flights/new')
